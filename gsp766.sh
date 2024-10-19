@@ -24,7 +24,11 @@ RESET=`tput sgr0`
 #----------------------------------------------------start--------------------------------------------------#
 
 echo "${BG_MAGENTA}${BOLD}Starting Execution${RESET}"
+gcloud services disable run.googleapis.com
 
+gcloud services enable run.googleapis.com
+
+sleep 30
 gcloud auth list
 gcloud config list project
 gsutil -m cp -r gs://spls/gsp766/gke-qwiklab ~
