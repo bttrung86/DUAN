@@ -63,11 +63,11 @@ kubectl apply -f frontend-deployment.yaml --namespace dev
 
 sleep 10
 
-kubectl autoscale deployment frontend --cpu-percent=50 --min=1 --max=17 --namespace dev
+kubectl autoscale deployment frontend --cpu-percent=50 --min=1 --max=$max --namespace dev
 
 kubectl get hpa --namespace dev
 
-gcloud beta container clusters update $Cluster_Name --enable-autoscaling --min-nodes 1 --max-nodes $max --zone=$ZONE
+gcloud beta container clusters update $Cluster_Name --enable-autoscaling --min-nodes 1 --max-nodes 6 --zone=$ZONE
 
 
 echo "${BG_RED}${BOLD}Congratulations For Completing The Lab !!!${RESET}"
